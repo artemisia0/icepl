@@ -1,5 +1,5 @@
 ### Syntax
-`
+```
 file: *def
 def: defHeader defBody
 defHeader: "+" ?name *defParam
@@ -31,7 +31,7 @@ Lexer removes all the comments and
         sum<2 5>
 
 +same<sum<2 5> +.<sum<2 5>>>  # minified version
-`
+```
 
 
 ### Other
