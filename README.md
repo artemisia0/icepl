@@ -1,5 +1,37 @@
 ### Syntax
-Write it...
+`
+file: *def
+def: defHeader defBody
+defHeader: "+" ?name *defParam
+defBody: indent call *(indent def)
+indent: "  " | "    " | "\t"
+callParam: ?(name ":") object
+call: name *(indent callParam)
+object: call | def | literal
+literal: arr| map | flt | int | str
+arr: "[" *(indent object) "]"
+map: "{" *(indent map_item) "}"
+map_item: name ":" object
+flt: +digit "." +digit
+int: +digit
+str: fmt_str | raw_str
+fmt_str: "\"" *any_character "\""
+raw_str: "'" *any_character "'"
+newline: ";" | "\n"
+comment: "#" any_character_except_newline newline
+
+Lexer removes all the comments and 
+"<" is indent begin and ">" is indent end
+
++main
+    sum
+        2
+        5
+    +.
+        sum<2 5>
+
++same<sum<2 5> +.<sum<2 5>>>  # minified version
+`
 
 
 ### Other
